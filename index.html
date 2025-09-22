@@ -27,60 +27,118 @@
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 80px 0;
-            text-align: center;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
 
         .profile-section {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 40px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .profile-img {
             width: 120px;
             height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 50%;
-            background: rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 4px solid rgba(255,255,255,0.2);
         }
 
-        .profile-info h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .profile-info p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .profile-info {
+            text-align: left;
         }
 
         .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stat-item {
             text-align: center;
+            padding: 25px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-icon {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 2.2rem;
+            font-weight: 700;
             display: block;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-label {
             font-size: 0.9rem;
             opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .section {
@@ -94,14 +152,8 @@
             color: #24292f;
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .project-card {
+        /* Unified Card Theme */
+        .unified-card {
             background: #f6f8fa;
             border: 1px solid #d0d7de;
             border-radius: 12px;
@@ -109,9 +161,11 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-card::before {
+        .unified-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -121,9 +175,63 @@
             background: linear-gradient(90deg, #667eea, #764ba2);
         }
 
-        .project-card:hover {
+        .unified-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .unified-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .unified-card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .unified-card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #24292f;
+            margin: 0;
+        }
+
+        .unified-card-subtitle {
+            font-size: 1.1rem;
+            color: #0969da;
+            margin: 5px 0 0 0;
+            font-weight: 500;
+        }
+
+        .unified-card-content {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .unified-card-footer {
+            margin-top: auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            /* Inherits from .unified-card */
         }
 
         .project-header {
@@ -151,10 +259,15 @@
             color: #24292f;
         }
 
+        .project-description {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
         .project-links {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: auto;
         }
 
         .store-link {
@@ -231,40 +344,204 @@
             transform: translateY(-2px);
         }
 
-        @media (max-width: 768px) {
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-info h1 {
-                font-size: 2rem;
-            }
-
-            .stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
+        .experience-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
         }
 
-        .tech-badge {
-            display: inline-block;
-            background: #e7f3ff;
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d0d7de;
+            transform: translateX(-50%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin: 60px 0;
+        }
+
+        .experience-item:nth-child(odd) .experience-card {
+            margin-right: calc(50% + 15px);
+        }
+
+        .experience-item:nth-child(even) .experience-card {
+            margin-left: calc(50% + 15px);
+        }
+
+        .experience-card {
+            /* Inherits from .unified-card */
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        .experience-item:nth-child(odd) .timeline-date {
+            right: calc(50% - 18vw);
+        }
+
+        .experience-item:nth-child(even) .timeline-date {
+            left: calc(50% - 18vw);
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .experience-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .experience-info {
+            flex: 1;
+        }
+
+        .company-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #24292f;
+            margin: 0 0 5px 0;
+        }
+
+        .job-title {
+            font-size: 1.1rem;
             color: #0969da;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 0.8rem;
-            margin: 2px;
-            border: 1px solid #c8e1ff;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .experience-description {
+            margin-bottom: 15px;
+        }
+
+        .experience-description p {
+            margin-bottom: 15px;
+            color: #24292f;
+            line-height: 1.6;
+        }
+
+        .achievements {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievements li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: #24292f;
+            line-height: 1.5;
+        }
+
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #0969da;
+            font-weight: bold;
+        }
+
+        .education-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .education-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .education-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .education-info {
+            flex: 1;
+        }
+
+        .university-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #24292f;
+            margin: 0 0 5px 0;
+        }
+
+        .degree-name {
+            font-size: 1.1rem;
+            color: #0969da;
+            margin: 0 0 8px 0;
+            font-weight: 500;
+        }
+
+        .education-year {
+            font-size: 0.9rem;
+            color: #656d76;
+            font-weight: 500;
         }
 
         .skills-section {
@@ -273,22 +550,215 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .skill-category {
-            background: white;
-            padding: 25px;
+            background: #f6f8fa;
+            border: 1px solid #d0d7de;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .skill-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 15px;
             color: #24292f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #0969da;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 5px 8px 5px 0;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tech-badge:hover {
+            background: #0860ca;
+            transform: translateY(-1px);
+        }
+
+        .skills-badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        @media (max-width: 1200px) {
+            .experience-item:nth-child(odd) .timeline-date {
+                right: calc(50% - 15vw);
+            }
+
+            .experience-item:nth-child(even) .timeline-date {
+                left: calc(50% - 15vw);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .experience-item:nth-child(odd) .timeline-date {
+                right: calc(50% - 12vw);
+            }
+
+            .experience-item:nth-child(even) .timeline-date {
+                left: calc(50% - 12vw);
+            }
+        }
+
+        @media (max-width: 850px) {
+            .experience-timeline {
+                padding: 10px 15px;
+            }
+
+            .experience-timeline::before {
+                left: 25px;
+                transform: none;
+            }
+
+            .experience-item:nth-child(odd) .experience-card,
+            .experience-item:nth-child(even) .experience-card {
+                margin-left: 50px;
+                margin-right: 0;
+            }
+
+            .experience-item:nth-child(odd) .timeline-date,
+            .experience-item:nth-child(even) .timeline-date {
+                position: relative;
+                top: auto;
+                right: auto;
+                left: auto;
+                margin-bottom: 10px;
+                display: inline-block;
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+
+            .experience-card {
+                margin-top: 0;
+                padding: 15px;
+            }
+
+            .company-name {
+                font-size: 1.1rem;
+            }
+
+            .job-title {
+                font-size: 0.9rem;
+            }
+
+            .achievements li {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0 60px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .profile-info {
+                text-align: center;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .profile-info h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-info p {
+                font-size: 1.2rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-item {
+                padding: 20px 10px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                gap: 15px;
+                padding: 0 20px;
+            }
+
+            .education-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .education-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .education-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                margin: 0 auto;
+            }
+
+            .university-name {
+                font-size: 1.2rem;
+            }
+
+            .degree-name {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -296,26 +766,39 @@
     <header>
         <div class="container">
             <div class="profile-section">
-                <div class="profile-img">👨‍💻</div>
+                <div class="profile-img">SL</div>
                 <div class="profile-info">
                     <h1>Shawon Lodh</h1>
-                    <p>Mobile Application Developer</p>
+                    <p>Senior Mobile Application Developer</p>
                 </div>
             </div>
+            
             <div class="stats">
-                <div class="stat-item">
+                <div class="stat-item" onclick="scrollToSection('experience')">
+                    <svg class="stat-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
                     <span class="stat-number">4+</span>
                     <span class="stat-label">Years Experience</span>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" onclick="scrollToSection('projects')">
+                    <svg class="stat-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
                     <span class="stat-number">15+</span>
                     <span class="stat-label">Published Apps</span>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" onclick="scrollToSection('projects')">
+                    <svg class="stat-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/>
+                    </svg>
                     <span class="stat-number">500K+</span>
                     <span class="stat-label">Downloads</span>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" onclick="scrollToSection('projects')">
+                    <svg class="stat-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
                     <span class="stat-number">4.7★</span>
                     <span class="stat-label">Average Rating</span>
                 </div>
@@ -323,103 +806,250 @@
         </div>
     </header>
 
-    <section class="section">
+    <!-- 1. Experience Section -->
+    <section class="section" id="experience">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="timeline-date">2021 - Present</div>
+                    <div class="experience-card unified-card">
+                        <div class="experience-header unified-card-header">
+                            <div class="experience-icon unified-card-icon">🏢</div>
+                            <div class="experience-info">
+                                <h3 class="company-name unified-card-title">Software Shop Limited (SSL Wireless)</h3>
+                                <p class="job-title unified-card-subtitle">Senior Mobile Application Developer</p>
+                            </div>
+                        </div>
+                        <div class="experience-description">
+                            <p>Leading mobile app development for enterprise clients including banking, utility, and business solutions. Developed 9+ production applications serving 500K+ users with 4.7★ average rating.</p>
+                            <ul class="achievements">
+                                <li>Built digital banking apps (Magpie, myBKB) serving 20,000+ active users</li>
+                                <li>Developed utility payment solutions (Desco) with 500K+ downloads</li>
+                                <li>Created ERP solutions (RMG Connect) for interlining business operations</li>
+                                <li>Implemented biometric authentication and multi-factor security systems</li>
+                                <li>Led development of health & wellness applications with real-time data sync</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="timeline-date">2020 - 2021</div>
+                    <div class="experience-card unified-card">
+                        <div class="experience-header unified-card-header">
+                            <div class="experience-icon unified-card-icon">🌊</div>
+                            <div class="experience-info">
+                                <h3 class="company-name unified-card-title">Aqualink Bangladesh Limited</h3>
+                                <p class="job-title">Mobile Application Developer</p>
+                            </div>
+                        </div>
+                        <div class="experience-description">
+                            <p>Specialized in IoT-integrated mobile applications for agricultural and industrial solutions. Developed smart systems for irrigation, generator monitoring, and agro e-commerce platforms.</p>
+                            <ul class="achievements">
+                                <li>Built SaaS-powered agro e-commerce platform connecting farmers and buyers</li>
+                                <li>Developed intelligent irrigation system with IoT sensors and AI analytics</li>
+                                <li>Created generator monitoring solutions for reliable power supply management</li>
+                                <li>Implemented real-time data visualization and reporting features</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="experience-card unified-card">
+                        <div class="experience-header unified-card-header">
+                            <div class="experience-icon unified-card-icon">🚚</div>
+                            <div class="experience-info">
+                                <h3 class="company-name unified-card-title">Paperfly Private Limited</h3>
+                                <p class="job-title">Flutter Developer</p>
+                            </div>
+                        </div>
+                        <div class="experience-description">
+                            <p>Developed logistics and delivery management applications. Built merchant-focused mobile solutions supporting large-scale order management and real-time tracking systems.</p>
+                            <ul class="achievements">
+                                <li>Developed PAPERFLY GO merchant app supporting 50,000+ active users</li>
+                                <li>Implemented real-time order management and tracking systems</li>
+                                <li>Built scalable architecture for high-volume logistics operations</li>
+                                <li>Optimized app performance for seamless user experience</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Skills Section -->
+    <section class="section skills-section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-title">UI, State &amp; Architecture</h3>
+                    <div class="skills-badges-container">
+                        <div class="tech-badge">Dart</div>
+                        <div class="tech-badge">Kotlin</div>
+                        <div class="tech-badge">Flutter</div>
+                        <div class="tech-badge">Jetpack Compose</div>
+                        <div class="tech-badge">Bloc</div>
+                        <div class="tech-badge">Riverpod</div>
+                        <div class="tech-badge">Provider</div>
+                        <div class="tech-badge">GetX</div>
+                        <div class="tech-badge">Custom Animations</div>
+                        <div class="tech-badge">Localization</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Backend &amp; APIs</h3>
+                    <div class="skills-badges-container">
+                        <div class="tech-badge">REST APIs</div>
+                        <div class="tech-badge">GraphQL</div>
+                        <div class="tech-badge">Firebase</div>
+                        <div class="tech-badge">Firebase Auth</div>
+                        <div class="tech-badge">Firestore</div>
+                        <div class="tech-badge">Realtime DB</div>
+                        <div class="tech-badge">OAuth 2.0</div>
+                        <div class="tech-badge">JWT</div>
+                        <div class="tech-badge">WebSockets</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Testing &amp; Tools</h3>
+                    <div class="skills-badges-container">
+                        <div class="tech-badge">Unit/Integration Testing</div>
+                        <div class="tech-badge">Git</div>
+                        <div class="tech-badge">GitHub</div>
+                        <div class="tech-badge">Codemagic</div>
+                        <div class="tech-badge">Android Studio</div>
+                        <div class="tech-badge">VS Code</div>
+                        <div class="tech-badge">Jira</div>
+                        <div class="tech-badge">Figma</div>
+                        <div class="tech-badge">Postman</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Featured Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
             
             <div class="company-section">
                 <h3 class="company-title">SSL Wireless Projects</h3>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏦</div>
-                            <div class="project-name">Magpie</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🏦</div>
+                            <div class="project-name unified-card-title">Magpie</div>
                         </div>
-                        <p>Digital banking app for BASIC Bank Limited with 10,000+ active users, biometric login, multi-factor security</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Digital banking app for BASIC Bank Limited with 10,000+ active users, biometric login, multi-factor security</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.basicbanklimited.magpie" class="store-link" target="_blank">📱 Android</a>
                             <a href="https://apps.apple.com/us/app/magpie-app/id6449897818" class="store-link ios" target="_blank">🍎 iOS</a>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏦</div>
-                            <div class="project-name">myBKB</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🏦</div>
+                            <div class="project-name unified-card-title">myBKB</div>
                         </div>
-                        <p>Mobile banking app for Krishi Bank Limited serving 10,000+ customers, real-time balance tracking</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Mobile banking solution for Bangladesh Krishi Bank with secure transactions and account management</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.sslwireless.mybkb" class="store-link" target="_blank">📱 Android</a>
                             <a href="https://apps.apple.com/us/app/mybkb-app/id6739765439" class="store-link ios" target="_blank">🍎 iOS</a>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">⚡</div>
-                            <div class="project-name">Desco</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">⚡</div>
+                            <div class="project-name unified-card-title">Desco</div>
                         </div>
-                        <p>Digital electricity bill payment app with 500,000+ downloads</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Utility payment app for Dhaka Electric Supply Company with 500K+ downloads and bill management</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.desco.ssl" class="store-link" target="_blank">📱 Android</a>
                             <a href="https://apps.apple.com/us/app/desco/id1196216622" class="store-link ios" target="_blank">🍎 iOS</a>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🔧</div>
-                            <div class="project-name">WZPDCL Customer Service</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🏭</div>
+                            <div class="project-name unified-card-title">RMG Connect</div>
                         </div>
-                        <p>Utility customer support app for 10,000+ customers, bill payments and complaint tracking</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Mobile ERP for interlining – streamlined exports, stock, delivery, QC, and secure role-based access.</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
+                            <a href="https://play.google.com/store/apps/details?id=com.sslwireless.rmg" class="store-link" target="_blank">📱 Android</a>
+                            <a href="https://apps.apple.com/us/app/rmg-connect/id6751641486" class="store-link ios" target="_blank">🍎 iOS</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🌱</div>
+                            <div class="project-name unified-card-title">Ecopia</div>
+                        </div>
+                        <div class="project-description unified-card-content">
+                            <p>Blockchain-based platform for plastic waste management fostering sustainability</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
+                            <a href="https://play.google.com/store/apps/details?id=com.sslwireless.ecopiaapp" class="store-link" target="_blank">📱 Android</a>
+                        </div>
+                    </div>
+
+
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🔧</div>
+                            <div class="project-name unified-card-title">WZPDCL Customer Service</div>
+                        </div>
+                        <div class="project-description unified-card-content">
+                            <p>Utility customer support app for 10,000+ customers, bill payments and complaint tracking</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.adndiginet.wzpdcl_app_flutter" class="store-link" target="_blank">📱 Android</a>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏍️</div>
-                            <div class="project-name">BDHonda+</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🏍️</div>
+                            <div class="project-name unified-card-title">BDHonda+</div>
                         </div>
-                        <p>Honda motorcycle ownership app with 4.3★ rating and 5,000+ downloads</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Honda motorcycle ownership app with 4.3★ rating and 5,000+ downloads</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.sslwireless.bdhondaPlus" class="store-link" target="_blank">📱 Android</a>
                             <a href="https://apps.apple.com/us/app/bdhonda/id6736968691" class="store-link ios" target="_blank">🍎 iOS</a>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏥</div>
-                            <div class="project-name">EASY Health and Fitness</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🏥</div>
+                            <div class="project-name unified-card-title">EASY: Health and Fitness</div>
                         </div>
-                        <p>Wellness app rated 4.7★ with 1,000+ users, health logging and doctor appointments</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Wellness app rated 4.7★ with 1,000+ users, health logging and doctor appointments</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.sslwireless.easyhealth" class="store-link" target="_blank">📱 Android</a>
                             <a href="https://apps.apple.com/us/app/easy-health-fitness/id6463002020" class="store-link ios" target="_blank">🍎 iOS</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">♻️</div>
-                            <div class="project-name">Ecopia</div>
-                        </div>
-                        <p>Blockchain-based platform for plastic waste management fostering sustainability</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.sslwireless.ecopiaapp" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🛠️</div>
-                            <div class="project-name">ssl_cli</div>
-                        </div>
-                        <p>Open-source Flutter project scaffolding tool with over 512 downloads</p>
-                        <div class="project-links">
-                            <a href="https://pub.dev/packages/ssl_cli" class="store-link pub" target="_blank">📦 pub.dev</a>
                         </div>
                     </div>
                 </div>
@@ -428,36 +1058,29 @@
             <div class="company-section">
                 <h3 class="company-title">Aqualink Bangladesh Limited Projects</h3>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🌾</div>
-                            <div class="project-name">Agrotrace Purchase</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🌾</div>
+                            <div class="project-name unified-card-title">Agrotrace Purchase</div>
                         </div>
-                        <p>SaaS-powered agro e-commerce platform connecting farmers, buyers, and financial services</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>SaaS-powered agro e-commerce platform connecting farmers, buyers, and financial services</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=slodh.aqualink.tobaccotrace.agrotracetobacco" class="store-link" target="_blank">📱 Android</a>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">💧</div>
-                            <div class="project-name">Intelligent Irrigation System</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">💧</div>
+                            <div class="project-name unified-card-title">Intelligent Irrigation System</div>
                         </div>
-                        <p>Smart irrigation app employing IoT sensors and AI-driven analytics</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Smart irrigation app employing IoT sensors and AI-driven analytics</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.aqualinkbd.sensometer_weather_forecast" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">⚡</div>
-                            <div class="project-name">Sensometer Generator Monitor</div>
-                        </div>
-                        <p>IoT generator monitoring system ensuring reliable power supply</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.aqualinkbangladesh.sensometer_generator_monitoring" class="store-link" target="_blank">📱 Android</a>
                         </div>
                     </div>
                 </div>
@@ -466,14 +1089,16 @@
             <div class="company-section">
                 <h3 class="company-title">Paperfly Private Limited Projects</h3>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🚚</div>
-                            <div class="project-name">PAPERFLY GO</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🚚</div>
+                            <div class="project-name unified-card-title">PAPERFLY GO</div>
                         </div>
-                        <p>Merchant logistics app supporting 50,000+ active users with real-time order management</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.paperflymerchantapp" class="store-link" target="_blank">📱 Android</a>
+                        <div class="project-description unified-card-content">
+                            <p>Complete logistics solution for merchants with 50K+ downloads. Features real-time order tracking, merchant registration, invoice management, and nationwide delivery coverage across Bangladesh</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
+                            <a href="https://play.google.com/store/apps/details?id=com.paperflymerchantapp&hl=en&gl=US" class="store-link" target="_blank">📱 Android</a>
                         </div>
                     </div>
                 </div>
@@ -482,15 +1107,30 @@
             <div class="company-section">
                 <h3 class="company-title">Other Projects</h3>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">📚</div>
-                            <div class="project-name">iKnow by AdSEARCH</div>
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🔍</div>
+                            <div class="project-name unified-card-title">iKnow by AdSEARCH</div>
                         </div>
-                        <p>Workplace abuse awareness app for icddrb Bangladesh with interactive videos and quizzes</p>
-                        <div class="project-links">
+                        <div class="project-description unified-card-content">
+                            <p>Workplace abuse awareness app for icddrb Bangladesh with interactive videos and quizzes</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
                             <a href="https://play.google.com/store/apps/details?id=com.icddrb.iknow" class="store-link" target="_blank">📱 Android</a>
                             <a href="https://apps.apple.com/gb/app/iknow-by-adsearch/id6633421534" class="store-link ios" target="_blank">🍎 iOS</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card unified-card">
+                        <div class="project-header unified-card-header">
+                            <div class="project-icon unified-card-icon">🛠️</div>
+                            <div class="project-name unified-card-title">ssl_cli</div>
+                        </div>
+                        <div class="project-description unified-card-content">
+                            <p>Open-source Flutter project scaffolding tool with over 512 downloads</p>
+                        </div>
+                        <div class="project-links unified-card-footer">
+                            <a href="https://pub.dev/packages/ssl_cli" class="store-link pub" target="_blank">📦 pub.dev</a>
                         </div>
                     </div>
                 </div>
@@ -498,51 +1138,26 @@
         </div>
     </section>
 
-    <section class="section skills-section">
+    <!-- 4. Education Section -->
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="skill-title">UI, State Management and Architecture</h3>
-                    <div class="tech-badge">Dart</div>
-                    <div class="tech-badge">Kotlin</div>
-                    <div class="tech-badge">Flutter</div>
-                    <div class="tech-badge">Jetpack Compose</div>
-                    <div class="tech-badge">Bloc</div>
-                    <div class="tech-badge">Riverpod</div>
-                    <div class="tech-badge">Provider</div>
-                    <div class="tech-badge">GetX</div>
-                    <div class="tech-badge">Custom Animations</div>
-                    <div class="tech-badge">Localization</div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">Backend and APIs</h3>
-                    <div class="tech-badge">REST API</div>
-                    <div class="tech-badge">GraphQL</div>
-                    <div class="tech-badge">Firebase</div>
-                    <div class="tech-badge">Firebase Auth</div>
-                    <div class="tech-badge">Firestore</div>
-                    <div class="tech-badge">Realtime DB</div>
-                    <div class="tech-badge">OAuth 2.0</div>
-                    <div class="tech-badge">JWT</div>
-                    <div class="tech-badge">WebSockets</div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">Testing and Tools</h3>
-                    <div class="tech-badge">Unit/Integration Testing</div>
-                    <div class="tech-badge">Git</div>
-                    <div class="tech-badge">GitHub</div>
-                    <div class="tech-badge">Codemagic</div>
-                    <div class="tech-badge">Android Studio</div>
-                    <div class="tech-badge">VS Code</div>
-                    <div class="tech-badge">Jira</div>
-                    <div class="tech-badge">Figma</div>
-                    <div class="tech-badge">Postman</div>
+            <h2 class="section-title">Education</h2>
+            <div class="education-container">
+                <div class="education-item unified-card">
+                    <div class="education-header unified-card-header">
+                        <div class="education-icon unified-card-icon">🎓</div>
+                        <div class="education-info">
+                            <h3 class="university-name unified-card-title">Ahsanullah University of Science & Technology (AUST)</h3>
+                            <p class="degree-name unified-card-subtitle">Bachelor of Science in Computer Science & Engineering</p>
+                            <span class="education-year">2015 - 2019</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 5. Connect With Me Section -->
     <section class="contact-section">
         <div class="container">
             <h2 class="section-title">Connect With Me</h2>
@@ -565,5 +1180,17 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    </script>
 </body>
 </html>
