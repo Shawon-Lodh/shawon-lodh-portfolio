@@ -200,6 +200,7 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #0969da;
+            text-align: center;
         }
 
         .contact-section {
@@ -290,6 +291,80 @@
             margin-bottom: 15px;
             color: #24292f;
         }
+
+        .education-item {
+            background: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .education-degree {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #24292f;
+            margin: 0;
+        }
+
+        .education-date {
+            font-size: 1rem;
+            color: #656d76;
+            font-weight: 500;
+        }
+
+        .education-university {
+            font-size: 1.1rem;
+            margin: 10px 0 5px 0;
+        }
+
+        .education-university a {
+            color: #0969da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .education-university a:hover {
+            text-decoration: underline;
+        }
+
+        .education-location {
+            font-size: 1rem;
+            color: #656d76;
+            margin: 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .education-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .education-degree {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -304,7 +379,7 @@
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <span class="stat-number">4+</span>
+                    <span class="stat-number">4.5+</span>
                     <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-item">
@@ -494,6 +569,22 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div class="education-header">
+                    <h3 class="education-degree">BSc, Computer Science and Engineering</h3>
+                    <span class="education-date">Apr 2016 – Jan 2021</span>
+                </div>
+                <p class="education-university">
+                    <a href="https://aust.edu/" target="_blank">Ahsanullah University of Science and Technology</a>
+                </p>
+                <p class="education-location">Dhaka, Bangladesh</p>
             </div>
         </div>
     </section>
