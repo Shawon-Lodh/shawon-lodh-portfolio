@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Shawon Lodh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-details.css">
+</head>
+
+<body class="dark-theme">
+    <header class="details-topbar">
+        <div class="container details-topbar-inner">
+            <a href="index.html#home" class="nav-logo">Shawon<span>.</span></a>
+            <a href="index.html#projects" class="btn btn-pill btn-outline-dark back-btn"><i class="fas fa-arrow-left"></i>
+                Back to Works</a>
+        </div>
+    </header>
+
+    <main class="details-main">
+        <section class="details-hero">
+            <div class="container">
+                <p class="details-breadcrumb"><a href="index.html#projects">Works</a> / <span id="project-breadcrumb">Project</span>
+                </p>
+                <div class="details-title-row">
+                    <div class="details-icon-wrap"><i id="project-icon" class="fas fa-mobile-alt"></i></div>
+                    <div>
+                        <span id="project-category" class="project-category-chip">Category</span>
+                        <h1 id="project-title">Project Title</h1>
+                    </div>
+                </div>
+                <p id="project-summary" class="details-summary"></p>
+                <div id="project-links" class="details-links"></div>
+            </div>
+        </section>
+
+        <section class="details-content">
+            <div class="container details-grid">
+                <article class="details-panel details-panel-wide">
+                    <h2>Impact Metrics</h2>
+                    <div id="project-metrics" class="metric-grid"></div>
+                </article>
+
+                <article class="details-panel">
+                    <h2>Key Features</h2>
+                    <ul id="project-features" class="details-list"></ul>
+                </article>
+
+                <article class="details-panel">
+                    <h2>Tech Stack</h2>
+                    <div id="project-tech-stack" class="tech-stack"></div>
+                </article>
+
+                <article class="details-panel">
+                    <h2>My Responsibilities</h2>
+                    <ul id="project-responsibilities" class="details-list"></ul>
+                </article>
+
+                <article class="details-panel">
+                    <h2>Delivery Notes</h2>
+                    <ul id="project-delivery" class="details-list"></ul>
+                </article>
+
+                <article class="details-panel details-panel-wide">
+                    <h2>Project Context</h2>
+                    <div class="context-grid">
+                        <div>
+                            <span class="context-label">Role</span>
+                            <p id="project-role"></p>
+                        </div>
+                        <div>
+                            <span class="context-label">Company</span>
+                            <p id="project-company"></p>
+                        </div>
+                        <div>
+                            <span class="context-label">Platforms</span>
+                            <p id="project-platforms"></p>
+                        </div>
+                        <div>
+                            <span class="context-label">Timeline</span>
+                            <p id="project-timeline"></p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="project-details.js"></script>
+</body>
+
+</html>

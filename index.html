@@ -1,660 +1,868 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shawon Lodh - Flutter Developer Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Shawon Lodh | Mobile Application Developer</title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #24292f;
-            background-color: #ffffff;
-        }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-        }
-
-        .profile-info h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .profile-info p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            color: #24292f;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .project-card {
-            background: #f6f8fa;
-            border: 1px solid #d0d7de;
-            border-radius: 12px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .project-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .project-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #24292f;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .store-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 8px 16px;
-            background: #0969da;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-
-        .store-link:hover {
-            background: #0860ca;
-        }
-
-        .store-link.ios {
-            background: #000;
-        }
-
-        .store-link.ios:hover {
-            background: #333;
-        }
-
-        .store-link.pub {
-            background: #02569b;
-        }
-
-        .store-link.pub:hover {
-            background: #014a87;
-        }
-
-        .company-section {
-            margin-bottom: 40px;
-        }
-
-        .company-title {
-            font-size: 1.8rem;
-            color: #0969da;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #0969da;
-            text-align: center;
-        }
-
-        .contact-section {
-            background: #f6f8fa;
-            padding: 60px 0;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            background: white;
-            color: #24292f;
-            text-decoration: none;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-        }
-
-        .contact-link:hover {
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-info h1 {
-                font-size: 2rem;
-            }
-
-            .stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        .tech-badge {
-            display: inline-block;
-            background: #e7f3ff;
-            color: #0969da;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 0.8rem;
-            margin: 2px;
-            border: 1px solid #c8e1ff;
-        }
-
-        .skills-section {
-            background: #f6f8fa;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .skill-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #24292f;
-        }
-
-        .education-item {
-            background: #f6f8fa;
-            border: 1px solid #d0d7de;
-            border-radius: 12px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .education-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-
-        .education-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .education-degree {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #24292f;
-            margin: 0;
-        }
-
-        .education-date {
-            font-size: 1rem;
-            color: #656d76;
-            font-weight: 500;
-        }
-
-        .education-university {
-            font-size: 1.1rem;
-            margin: 10px 0 5px 0;
-        }
-
-        .education-university a {
-            color: #0969da;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .education-university a:hover {
-            text-decoration: underline;
-        }
-
-        .education-location {
-            font-size: 1rem;
-            color: #656d76;
-            margin: 0;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            .education-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            .education-degree {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="profile-section">
-                <div class="profile-img">👨‍💻</div>
-                <div class="profile-info">
-                    <h1>Shawon Lodh</h1>
-                    <p>Mobile Application Developer</p>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-number">4.5+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Published Apps</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">500K+</span>
-                    <span class="stat-label">Downloads</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">4.7★</span>
-                    <span class="stat-label">Average Rating</span>
-                </div>
-            </div>
+
+<body class="dark-theme">
+
+    <!-- Sticky Clean Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Shawon<span>.</span></a>
+
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#open-source" class="nav-link">Open Source</a>
+                <a href="#projects" class="nav-link">Works</a>
+                <a href="#experience" class="nav-link">History</a>
+                <a href="#contact" class="nav-link cta-link">Say Hello</a>
+            </nav>
         </div>
     </header>
 
-    <section class="section">
+    <main>
+        <!-- Home / Hero Section -->
+        <section id="home" class="hero section position-relative">
+            <!-- Background Elements -->
+            <div class="hero-watermark">SHAWON</div>
+            <div class="line-decorator">
+                <div class="line-dot"></div>
+            </div>
+
+            <div class="container hero-wrapper">
+                <div class="hero-content reveal">
+                    <div class="hero-greeting">
+                        <span class="greeting-black">HELLO,</span> <span class="greeting-teal">MY NAME IS</span>
+                    </div>
+
+                    <h1 class="hero-name-first">SHAWON</h1>
+                    <h2 class="hero-name-last">LODH</h2>
+
+                    <div class="hero-roles-container">
+                        <span class="role-text-black">I AM A</span>
+                        <span class="role-cursive typed-text"></span><span class="cursor">&nbsp;</span>
+                    </div>
+
+                    <p class="hero-description mt-3">
+                        With over <strong>5+ years of experience</strong> in mobile app development, I build secure
+                        and scalable products with <strong>500,000+ combined downloads</strong>, supporting
+                        <strong>10,000+ active banking users</strong> and nationwide logistics operations.
+                    </p>
+                    <p class="hero-metrics">LeetCode 1256 | 74 Solved | 22 StackOverflow Answers</p>
+
+                    <div class="hero-socials">
+                        <a href="https://linkedin.com/in/shawon-lodh" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Shawon-Lodh" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://stackoverflow.com/users/17956869" target="_blank"><i
+                                class="fab fa-stack-overflow"></i></a>
+                    </div>
+
+                    <div class="hero-actions mt-4">
+                        <a href="#projects" class="btn btn-pill btn-primary">
+                            EXPLORE WORKS
+                        </a>
+                        <a href="assets/Shawon-Lodh-CV.pdf" class="btn btn-pill btn-outline-dark" target="_blank"
+                            download="Shawon-Lodh-CV.pdf">
+                            DOWNLOAD CV
+                        </a>
+                    </div>
+                </div>
+
+                    <div class="hero-visual reveal">
+                        <div class="hero-image-container">
+                        <!-- Teal Backdrop Circle -->
+                        <div class="hero-backdrop"></div>
+
+                        <!-- CV Photo -->
+                        <div class="portrait-circle">
+                            <img src="assets/shawon-cv-photo.png" alt="Shawon Lodh portrait from CV">
+                        </div>
+
+                        <!-- Dot Patterns -->
+                        <div class="dot-pattern pattern-top-right"></div>
+                        <div class="dot-pattern pattern-bottom-left"></div>
+
+                        <!-- Badges -->
+                        <div class="hero-badge badge-top badge-crash">
+                            <span class="badge-num">99%</span>
+                            <span class="badge-text">CRASH-FREE<br>USERS</span>
+                        </div>
+                        <div class="hero-badge badge-top-right badge-downloads">
+                            <span class="badge-num">500K+</span>
+                            <span class="badge-text">WORLDWIDE<br>DOWNLOADS</span>
+                        </div>
+                        <div class="hero-badge badge-left">
+                            <span class="badge-num">5+</span>
+                            <span class="badge-text">YEARS OF<br>EXPERIENCE</span>
+                        </div>
+                        <div class="hero-badge badge-right">
+                            <span class="badge-num">15+</span>
+                            <span class="badge-text">PUBLISHED<br>APPLICATIONS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Services Section -->
+        <section id="about" class="about section">
+            <div class="container position-relative">
+                <div class="watermark-bg">ABOUT</div>
+                <div class="section-header reveal">
+                    <p class="subtitle cursive-text">Get to know me</p>
+                    <h2 class="title">About <span class="highlight">Me</span></h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <p>I am an experienced Mobile Application Developer specializing in <strong>Flutter</strong> and
+                            <strong>Android (Kotlin/Java)</strong> native development.
+                        </p>
+                        <p>Over the years, I've gained hands-on experience in developing complex applications using
+                            RESTful APIs, GraphQL, and modern state management architectures. I'm proficient with
+                            popular tools like Firebase, Riverpod, and Bloc, consistently delivering secure, scalable,
+                            and responsive applications.</p>
+                        <p>Beyond coding, I'm a continuous learner, an aspiring tech leader, and an advocate for user
+                            privacy. I enjoy tackling complex architectural problems and delivering pixel-perfect UI
+                            experiences.</p>
+
+                    </div>
+
+                    <div class="about-info-list reveal">
+                        <ul class="info-list">
+                            <li><span class="info-label">Name:</span> <span class="info-value">Shawon Lodh</span></li>
+                            <li><span class="info-label">Email:</span> <a href="mailto:shawonlodh25@gmail.com"
+                                    class="info-link">shawonlodh25@gmail.com</a></li>
+                            <li><span class="info-label">Degree:</span> <span class="info-value">BSc in CSE (AUST)</span>
+                            </li>
+                            <li><span class="info-label">Current Position:</span> <span class="info-value">Software
+                                    Specialist, SSL Wireless (Dec 2022 - Present)</span></li>
+                            <li><span class="info-label">Location:</span> <span class="info-value">Dhaka,
+                                    Bangladesh</span></li>
+                            <li><span class="info-label">LeetCode:</span> <span class="info-value">Rating 1256,
+                                    74 Problems Solved</span></li>
+                            <li><span class="info-label">Community:</span> <span class="info-value">22 helpful Stack
+                                    Overflow answers</span></li>
+                            <li><span class="info-label">HackerRank:</span> <span class="info-value">Problem Solving
+                                    and 30 Days of Code badges</span></li>
+                            <li><span class="info-label">Freelance:</span> <span class="info-value available"><i
+                                        class="fas fa-circle"></i> Available</span></li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="#contact" class="btn btn-primary">Let's Talk</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education section">
+            <div class="container position-relative">
+                <div class="watermark-bg">EDUCATION</div>
+                <div class="section-header reveal">
+                    <p class="subtitle cursive-text">Academic foundation</p>
+                    <h2 class="title">My <span class="highlight">Education</span></h2>
+                </div>
+
+                <div class="education-grid reveal">
+                    <article class="education-card">
+                        <span class="education-level">Undergraduate</span>
+                        <h3 class="education-title">Bachelor of Science in Computer Science and Engineering (CSE)</h3>
+                        <p class="education-school">Ahsanullah University of Science and Technology, Dhaka, Bangladesh</p>
+                        <p class="education-meta">Apr 2016 - Jan 2021</p>
+                    </article>
+
+                    <article class="education-card">
+                        <span class="education-level">Higher Secondary</span>
+                        <h3 class="education-title">Higher Secondary Certificate (HSC), Science</h3>
+                        <p class="education-school">Government City College, Chattogram, Bangladesh</p>
+                        <p class="education-meta">Jun 2013 - May 2015</p>
+                    </article>
+
+                    <article class="education-card">
+                        <span class="education-level">Secondary</span>
+                        <h3 class="education-title">Secondary School Certificate (SSC), Science</h3>
+                        <p class="education-school">Nasirabad Government High School, Chattogram, Bangladesh</p>
+                        <p class="education-meta">Jan 2008 - Feb 2013</p>
+                    </article>
+
+                    <article class="education-card">
+                        <span class="education-level">Primary</span>
+                        <h3 class="education-title">Primary Education</h3>
+                        <p class="education-school">Lions School, Chattogram, Bangladesh</p>
+                        <p class="education-meta">Jan 2001 - Dec 2007</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section with Progress Bars -->
+        <section id="skills" class="skills section bg-alt">
+            <div class="container position-relative">
+                <div class="watermark-bg">SKILLS</div>
+                <div class="section-header reveal">
+                    <p class="subtitle cursive-text">My technical expertise</p>
+                    <h2 class="title">Professional <span class="highlight">Skills</span></h2>
+                </div>
+
+                <div class="skills-grid reveal">
+                    <div class="skills-column">
+                        <h3 class="skills-group-title">UI, State Management & Architecture</h3>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Dart & Flutter</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Kotlin & Android Native</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Jetpack Compose</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Bloc, Riverpod, Provider, GetX</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="92%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Custom Animations & Localization</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="88%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-column">
+                        <h3 class="skills-group-title">Backend & APIs</h3>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>REST API & GraphQL</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Firebase (Auth, Firestore, Realtime DB)</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>OAuth 2.0 & JWT</span>
+                                <span>84%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="84%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>WebSockets</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="82%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-column">
+                        <h3 class="skills-group-title">Testing & Tools</h3>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Unit & Integration Testing</span>
+                                <span>86%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="86%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Git & GitHub</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="92%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Codemagic (CI/CD)</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Android Studio & VS Code</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Jira, Figma & Postman</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Source Section -->
+        <section id="open-source" class="open-source section">
+            <div class="container position-relative">
+                <div class="watermark-bg">OPEN</div>
+                <div class="section-header reveal">
+                    <p class="subtitle cursive-text">Built for developers</p>
+                    <h2 class="title">My <span class="highlight">Open Source</span></h2>
+                </div>
+
+                <div class="open-source-feature reveal">
+                    <div class="open-source-content">
+                        <span class="project-category">Flutter CLI Package</span>
+                        <h3 class="project-title">ssl_cli</h3>
+                        <p class="project-desc">
+                            Open-source Flutter project scaffolding CLI package that helps bootstrap clean architecture
+                            based app structure faster, with pre-defined layers and reusable setup commands.
+                        </p>
+
+                        <div class="open-source-metrics">
+                            <div class="os-metric">
+                                <span class="os-value">500+</span>
+                                <span class="os-label">Downloads</span>
+                            </div>
+                            <div class="os-metric">
+                                <span class="os-value">CLI</span>
+                                <span class="os-label">Developer Tool</span>
+                            </div>
+                            <div class="os-metric">
+                                <span class="os-value">Dart</span>
+                                <span class="os-label">Ecosystem</span>
+                            </div>
+                        </div>
+
+                        <div class="project-tech-tags mt-3">
+                            <span>Dart</span><span>Flutter</span><span>Automation</span><span>Architecture</span>
+                        </div>
+
+                        <div class="project-links mt-4">
+                            <a href="https://pub.dev/packages/ssl_cli" target="_blank" class="text-link details-link"><i
+                                    class="fas fa-cube"></i> Check on pub.dev</a>
+                            <a href="project-details.html?project=ssl-cli" class="text-link"><i
+                                    class="fas fa-arrow-right"></i> Project Details</a>
+                        </div>
+                    </div>
+
+                    <div class="open-source-visual" aria-hidden="true">
+                        <div class="terminal-card">
+                            <div class="terminal-header">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <pre><code>$ dart pub global activate ssl_cli
+$ ssl_cli create fintech_app
+
+Creating project structure...
+lib/
+  core/
+  data/
+  domain/
+  presentation/
+
+Done. Happy coding.</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects / Portfolio Section -->
+        <section id="projects" class="projects section">
+            <div class="container position-relative">
+                <div class="watermark-bg">WORKS</div>
+                <div class="section-header reveal">
+                    <p class="subtitle cursive-text">Showcase of innovative solutions</p>
+                    <h2 class="title">My <span class="highlight">Portfolio</span></h2>
+                </div>
+
+                <!-- Projects Filter -->
+                <div class="projects-filter reveal">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="fintech">FinTech</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                    <button class="filter-btn" data-filter="iot">IoT & Health</button>
+                </div>
+
+                <div class="projects-grid reveal">
+                    <!-- Project Cards with Minimalist Design -->
+                    <div class="project-card minimal-card" data-category="fintech" data-project="magpie">
+                        <div class="project-img-placeholder">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">FinTech</span>
+                            <h3 class="project-title">Magpie</h3>
+                            <p class="project-desc">Digital banking app with 10k+ active users, biometric login, and
+                                multi-factor security for BASIC Bank Limited.</p>
+                            <div class="project-tech-tags">
+                                <span>Flutter</span><span>REST API</span>
+                            </div>
+                            <div class="project-links mt-3">
+                                <a href="project-details.html?project=magpie" class="text-link details-link"><i
+                                        class="fas fa-arrow-right"></i> Details</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.basicbanklimited.magpie"
+                                    target="_blank" class="text-link"><i class="fab fa-google-play"></i> Play Store</a>
+                                <a href="https://apps.apple.com/us/app/magpie-app/id6449897818" target="_blank"
+                                    class="text-link"><i class="fab fa-apple"></i> App Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card minimal-card" data-category="fintech" data-project="mybkb">
+                        <div class="project-img-placeholder">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">FinTech</span>
+                            <h3 class="project-title">myBKB</h3>
+                            <p class="project-desc">Mobile banking app serving 50,000+ customers with real-time
+                                transaction and balance tracking.</p>
+                            <div class="project-tech-tags">
+                                <span>Flutter</span><span>State Mgmt</span>
+                            </div>
+                            <div class="project-links mt-3">
+                                <a href="project-details.html?project=mybkb" class="text-link details-link"><i
+                                        class="fas fa-arrow-right"></i> Details</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.sslwireless.mybkb"
+                                    target="_blank" class="text-link"><i class="fab fa-google-play"></i> Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card minimal-card" data-category="ecommerce" data-project="bdhonda-plus">
+                        <div class="project-img-placeholder">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Automotive</span>
+                            <h3 class="project-title">BDHonda+</h3>
+                            <p class="project-desc">Highly-rated Honda motorcycle ownership app (4.3★) supporting
+                                10,000+ users.</p>
+                            <div class="project-tech-tags">
+                                <span>Android</span><span>iOS</span>
+                            </div>
+                            <div class="project-links mt-3">
+                                <a href="project-details.html?project=bdhonda-plus" class="text-link details-link"><i
+                                        class="fas fa-arrow-right"></i> Details</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.bdhonda.bdhonda_app"
+                                    target="_blank" class="text-link"><i class="fab fa-google-play"></i> Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card minimal-card" data-category="fintech" data-project="desco">
+                        <div class="project-img-placeholder">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Utility</span>
+                            <h3 class="project-title">Desco</h3>
+                            <p class="project-desc">Massive scale digital electricity bill payment application with over
+                                500,000+ downloads.</p>
+                            <div class="project-tech-tags">
+                                <span>Android</span>
+                            </div>
+                            <div class="project-links mt-3">
+                                <a href="project-details.html?project=desco" class="text-link details-link"><i
+                                        class="fas fa-arrow-right"></i> Details</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.desco.ssl" target="_blank"
+                                    class="text-link"><i class="fab fa-google-play"></i> Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card minimal-card" data-category="ecommerce" data-project="paperfly-go">
+                        <div class="project-img-placeholder">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Logistics</span>
+                            <h3 class="project-title">PAPERFLY GO</h3>
+                            <p class="project-desc">Merchant logistics app supporting 50,000+ active users with
+                                real-time order management capabilities.</p>
+                            <div class="project-tech-tags">
+                                <span>Android</span><span>Maps API</span>
+                            </div>
+                            <div class="project-links mt-3">
+                                <a href="project-details.html?project=paperfly-go" class="text-link details-link"><i
+                                        class="fas fa-arrow-right"></i> Details</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.paperflymerchantapp"
+                                    target="_blank" class="text-link"><i class="fab fa-google-play"></i> Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card minimal-card" data-category="iot" data-project="smart-irrigation">
+                        <div class="project-img-placeholder">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">IoT</span>
+                            <h3 class="project-title">Smart Irrigation</h3>
+                            <p class="project-desc">Intelligent irrigation application employing IoT sensors and
+                                AI-driven analytics for farming.</p>
+                            <div class="project-tech-tags">
+                                <span>IoT</span><span>Android</span>
+                            </div>
+                            <div class="project-links mt-3">
+                                <a href="project-details.html?project=smart-irrigation" class="text-link details-link"><i
+                                        class="fas fa-arrow-right"></i> Details</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.aqualinkbd.sensometer_weather_forecast"
+                                    target="_blank" class="text-link"><i class="fab fa-google-play"></i> Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card minimal-card" data-category="iot" data-project="easy-health">
+                        <div class="project-img-placeholder">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Health</span>
+                            <h3 class="project-title">EASY Health</h3>
+                            <p class="project-desc">Rated 4.7★ health logging and doctor appointment booking platform
+                                with a premium interface.</p>
+                            <div class="project-tech-tags">
+                                <span>Flutter</span>
+                            </div>
+                            <div class="project-links mt-3">
+                                <a href="project-details.html?project=easy-health" class="text-link details-link"><i
+                                        class="fas fa-arrow-right"></i> Details</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.sslwireless.easyhealth"
+                                    target="_blank" class="text-link"><i class="fab fa-google-play"></i> Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey / Timeline to Accordion Section -->
+        <section id="experience" class="journey section bg-alt">
+            <div class="container position-relative">
+                <div class="watermark-bg">RESUME</div>
+                <div class="section-header reveal">
+                    <p class="subtitle cursive-text">My career progression</p>
+                    <h2 class="title">Professional <span class="highlight">History</span></h2>
+                </div>
+
+                <div class="accordion-container reveal">
+                    <!-- Accordion Item 1 -->
+                    <div class="accordion-item active">
+                        <div class="accordion-header">
+                            <div class="accordion-title-grp">
+                                <h3>Software Specialist</h3>
+                                <span class="accordion-company">SSL Wireless</span>
+                            </div>
+                            <div class="accordion-meta">
+                                <span class="badge muted date-badge">Dec 2022 - Present</span>
+                                <span class="badge">Present</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p class="accordion-location">Dhaka, Bangladesh</p>
+                                <ul class="mt-3 decorated-list">
+                                    <li>Executed project scope analysis, risk assessment, and requirement gathering, delivering accurate timelines for project completion.</li>
+                                    <li>Managed version control, project architecture, and UI/UX template integration, improving team efficiency.</li>
+                                    <li>Developed modular, optimized code using design patterns and performed performance profiling for high-quality apps.</li>
+                                    <li>Conducted unit, system, and integration testing with mock objects, ensuring robust and scalable releases.</li>
+                                    <li>Debugged complex issues, resolved merge conflicts, and maintained CI/CD pipelines for smooth deployment.</li>
+                                    <li>Prepared release notes and deployment checklists, ensuring production server reliability.</li>
+                                    <li>Coordinated with Dev and QA teams and participated in client meetings to align deliverables.</li>
+                                    <li>Delivered technical training, knowledge transfers, and learning sessions, enhancing team skills.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div class="accordion-title-grp">
+                                <h3>Mobile App Developer</h3>
+                                <span class="accordion-company">Aqualink Bangladesh Limited</span>
+                            </div>
+                            <div class="accordion-meta">
+                                <span class="badge muted date-badge">Jul 2021 - Nov 2022</span>
+                                <span class="badge muted">Previous</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p class="accordion-location">Dhaka, Bangladesh</p>
+                                <ul class="mt-3 decorated-list">
+                                    <li>Transformed Figma designs into cross-platform mobile apps with hardware integration, animations, and API connectivity.</li>
+                                    <li>Applied Provider state management and integrated REST APIs, WebSockets, and MQTT for real-time features.</li>
+                                    <li>Deployed apps to Google Play Store, including Bluetooth POS printer integration for agriculture solutions.</li>
+                                    <li>Built IoT-enabled apps connecting industrial automation sensors with mobile platforms.</li>
+                                    <li>Collaborated in an agile team to debug, maintain, and optimize system performance.</li>
+                                    <li>Gathered and refined software requirements from stakeholders to ensure business alignment.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <div class="accordion-title-grp">
+                                <h3>Android Developer</h3>
+                                <span class="accordion-company">Paperfly Private Limited</span>
+                            </div>
+                            <div class="accordion-meta">
+                                <span class="badge muted date-badge">Mar 2021 - Jun 2021</span>
+                                <span class="badge muted">Previous</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="accordion-content">
+                                <p class="accordion-location">Dhaka, Bangladesh</p>
+                                <ul class="mt-3 decorated-list">
+                                    <li>Developed features for merchant creation, order processing, invoices, returns, and customer support in PaperFly GO.</li>
+                                    <li>Enhanced user experience with location-based warehouse and pickup locators and multilingual support.</li>
+                                    <li>Built and maintained native Android apps (Java and XML) for seamless integration with business workflows.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies Section (Kept intact but styled minimal) -->
+        <section class="hobbies section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="title">Live <span class="highlight">Stats</span></h2>
+                    <p class="subtitle cursive-text">Activity outside of work</p>
+                </div>
+                <!-- Reuse hobbies code, css will handle layout -->
+                <div class="hobbies-grid">
+                    <div class="hobby-card chess-card reveal"
+                        style="background:var(--bg-card); border:var(--border-light)">
+                        <div class="hobby-header"
+                            style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                            <div class="hobby-profile">
+                                <i class="fas fa-chess-knight hobby-icon" style="color: var(--accent-primary);"></i>
+                                <div>
+                                    <h3 style="font-size: 1.1rem; margin:0;">Chess.com</h3>
+                                    <a href="https://www.chess.com/member/shawonlodh25" target="_blank"
+                                        style="color:var(--text-muted); font-size:0.9rem;">@shawonlodh25</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats-grid mt-3" id="chess-stats-container">
+                            <div class="stat-box skeleton"></div>
+                            <div class="stat-box skeleton"></div>
+                        </div>
+                    </div>
+
+                    <div class="hobby-card leetcode-card reveal"
+                        style="background:var(--bg-card); border:var(--border-light)">
+                        <div class="hobby-header"
+                            style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                            <div class="hobby-profile">
+                                <i class="fas fa-code hobby-icon" style="color: #ffa116;"></i>
+                                <div>
+                                    <h3 style="font-size: 1.1rem; margin:0;">LeetCode</h3>
+                                    <a href="https://leetcode.com/shawonlodh" target="_blank"
+                                        style="color:var(--text-muted); font-size:0.9rem;">@shawonlodh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats-grid mt-3" id="leetcode-stats-container">
+                            <div class="stat-box skeleton"></div>
+                            <div class="stat-box skeleton"></div>
+                        </div>
+                    </div>
+
+                    <div class="hobby-card duolingo-card reveal"
+                        style="background:var(--bg-card); border:var(--border-light)">
+                        <div class="hobby-header"
+                            style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                            <div class="hobby-profile">
+                                <i class="fas fa-language hobby-icon" style="color: #58cc02;"></i>
+                                <div>
+                                    <h3 style="font-size: 1.1rem; margin:0;">Duolingo</h3>
+                                    <a href="https://www.duolingo.com/profile/shawonlodh" target="_blank"
+                                        style="color:var(--text-muted); font-size:0.9rem;">@shawonlodh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats-grid mt-3" id="duolingo-stats-container">
+                            <div class="stat-box skeleton"></div>
+                            <div class="stat-box skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section bg-alt">
+            <div class="container position-relative">
+                <div class="watermark-bg" style="font-size: 10rem;">CONTACT</div>
+                <div class="contact-layout reveal">
+                    <div class="contact-info-col">
+                        <p class="subtitle cursive-text">Let's talk about ideas</p>
+                        <h2 class="title" style="font-size: 3rem; margin-bottom: 30px;">Let's Work <br>Together.</h2>
+
+                        <div class="contact-details">
+                            <div class="contact-detail-item">
+                                <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <span class="detail-label">Email</span>
+                                    <a href="mailto:shawonlodh25@gmail.com"
+                                        class="detail-value">shawonlodh25@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-detail-item">
+                                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <span class="detail-label">Location</span>
+                                    <span class="detail-value">Dhaka, Bangladesh</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links-minimal mt-5">
+                            <a href="https://linkedin.com/in/shawon-lodh" target="_blank"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/Shawon-Lodh" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://stackoverflow.com/users/17956869" target="_blank"><i
+                                    class="fab fa-stack-overflow"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-col">
+                        <div class="form-card">
+                            <form>
+                                <div class="form-group">
+                                    <label>Your Name</label>
+                                    <input type="text" placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Your Email</label>
+                                    <input type="email" placeholder="john@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Your Message</label>
+                                    <textarea rows="4" placeholder="How can I help you?"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-primary w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer border-top">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            
-            <div class="company-section">
-                <h3 class="company-title">SSL Wireless Projects</h3>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏦</div>
-                            <div class="project-name">Magpie</div>
-                        </div>
-                        <p>Digital banking app for BASIC Bank Limited with 10,000+ active users, biometric login, multi-factor security</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.basicbanklimited.magpie" class="store-link" target="_blank">📱 Android</a>
-                            <a href="https://apps.apple.com/us/app/magpie-app/id6449897818" class="store-link ios" target="_blank">🍎 iOS</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏦</div>
-                            <div class="project-name">myBKB</div>
-                        </div>
-                        <p>Mobile banking app for Krishi Bank Limited serving 10,000+ customers, real-time balance tracking</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.sslwireless.mybkb" class="store-link" target="_blank">📱 Android</a>
-                            <a href="https://apps.apple.com/us/app/mybkb-app/id6739765439" class="store-link ios" target="_blank">🍎 iOS</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">⚡</div>
-                            <div class="project-name">Desco</div>
-                        </div>
-                        <p>Digital electricity bill payment app with 500,000+ downloads</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.desco.ssl" class="store-link" target="_blank">📱 Android</a>
-                            <a href="https://apps.apple.com/us/app/desco/id1196216622" class="store-link ios" target="_blank">🍎 iOS</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🔧</div>
-                            <div class="project-name">WZPDCL Customer Service</div>
-                        </div>
-                        <p>Utility customer support app for 10,000+ customers, bill payments and complaint tracking</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.adndiginet.wzpdcl_app_flutter" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏍️</div>
-                            <div class="project-name">BDHonda+</div>
-                        </div>
-                        <p>Honda motorcycle ownership app with 4.3★ rating and 5,000+ downloads</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.sslwireless.bdhondaPlus" class="store-link" target="_blank">📱 Android</a>
-                            <a href="https://apps.apple.com/us/app/bdhonda/id6736968691" class="store-link ios" target="_blank">🍎 iOS</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🏥</div>
-                            <div class="project-name">EASY Health and Fitness</div>
-                        </div>
-                        <p>Wellness app rated 4.7★ with 1,000+ users, health logging and doctor appointments</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.sslwireless.easyhealth" class="store-link" target="_blank">📱 Android</a>
-                            <a href="https://apps.apple.com/us/app/easy-health-fitness/id6463002020" class="store-link ios" target="_blank">🍎 iOS</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">♻️</div>
-                            <div class="project-name">Ecopia</div>
-                        </div>
-                        <p>Blockchain-based platform for plastic waste management fostering sustainability</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.sslwireless.ecopiaapp" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🛠️</div>
-                            <div class="project-name">ssl_cli</div>
-                        </div>
-                        <p>Open-source Flutter project scaffolding tool with over 512 downloads</p>
-                        <div class="project-links">
-                            <a href="https://pub.dev/packages/ssl_cli" class="store-link pub" target="_blank">📦 pub.dev</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="company-section">
-                <h3 class="company-title">Aqualink Bangladesh Limited Projects</h3>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🌾</div>
-                            <div class="project-name">Agrotrace Purchase</div>
-                        </div>
-                        <p>SaaS-powered agro e-commerce platform connecting farmers, buyers, and financial services</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=slodh.aqualink.tobaccotrace.agrotracetobacco" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">💧</div>
-                            <div class="project-name">Intelligent Irrigation System</div>
-                        </div>
-                        <p>Smart irrigation app employing IoT sensors and AI-driven analytics</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.aqualinkbd.sensometer_weather_forecast" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">⚡</div>
-                            <div class="project-name">Sensometer Generator Monitor</div>
-                        </div>
-                        <p>IoT generator monitoring system ensuring reliable power supply</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.aqualinkbangladesh.sensometer_generator_monitoring" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="company-section">
-                <h3 class="company-title">Paperfly Private Limited Projects</h3>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">🚚</div>
-                            <div class="project-name">PAPERFLY GO</div>
-                        </div>
-                        <p>Merchant logistics app supporting 50,000+ active users with real-time order management</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.paperflymerchantapp" class="store-link" target="_blank">📱 Android</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="company-section">
-                <h3 class="company-title">Other Projects</h3>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon">📚</div>
-                            <div class="project-name">iKnow by AdSEARCH</div>
-                        </div>
-                        <p>Workplace abuse awareness app for icddrb Bangladesh with interactive videos and quizzes</p>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.icddrb.iknow" class="store-link" target="_blank">📱 Android</a>
-                            <a href="https://apps.apple.com/gb/app/iknow-by-adsearch/id6633421534" class="store-link ios" target="_blank">🍎 iOS</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-content">
+                <div class="footer-brand">Shawon<span>.</span></div>
+                <p class="copyright">© 2026 Shawon Lodh. Crafted with passion & code.</p>
+                <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <div class="education-header">
-                    <h3 class="education-degree">BSc, Computer Science and Engineering</h3>
-                    <span class="education-date">Apr 2016 – Jan 2021</span>
-                </div>
-                <p class="education-university">
-                    <a href="https://aust.edu/" target="_blank">Ahsanullah University of Science and Technology</a>
-                </p>
-                <p class="education-location">Dhaka, Bangladesh</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section skills-section">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="skill-title">UI, State Management and Architecture</h3>
-                    <div class="tech-badge">Dart</div>
-                    <div class="tech-badge">Kotlin</div>
-                    <div class="tech-badge">Flutter</div>
-                    <div class="tech-badge">Jetpack Compose</div>
-                    <div class="tech-badge">Bloc</div>
-                    <div class="tech-badge">Riverpod</div>
-                    <div class="tech-badge">Provider</div>
-                    <div class="tech-badge">GetX</div>
-                    <div class="tech-badge">Custom Animations</div>
-                    <div class="tech-badge">Localization</div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">Backend and APIs</h3>
-                    <div class="tech-badge">REST API</div>
-                    <div class="tech-badge">GraphQL</div>
-                    <div class="tech-badge">Firebase</div>
-                    <div class="tech-badge">Firebase Auth</div>
-                    <div class="tech-badge">Firestore</div>
-                    <div class="tech-badge">Realtime DB</div>
-                    <div class="tech-badge">OAuth 2.0</div>
-                    <div class="tech-badge">JWT</div>
-                    <div class="tech-badge">WebSockets</div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-title">Testing and Tools</h3>
-                    <div class="tech-badge">Unit/Integration Testing</div>
-                    <div class="tech-badge">Git</div>
-                    <div class="tech-badge">GitHub</div>
-                    <div class="tech-badge">Codemagic</div>
-                    <div class="tech-badge">Android Studio</div>
-                    <div class="tech-badge">VS Code</div>
-                    <div class="tech-badge">Jira</div>
-                    <div class="tech-badge">Figma</div>
-                    <div class="tech-badge">Postman</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Connect With Me</h2>
-            <div class="contact-links">
-                <a href="mailto:shawonlodh25@gmail.com" class="contact-link">
-                    📧 Email
-                </a>
-                <a href="https://linkedin.com/in/shawon-lodh" class="contact-link" target="_blank">
-                    💼 LinkedIn
-                </a>
-                <a href="https://github.com/Shawon-Lodh" class="contact-link" target="_blank">
-                    💻 GitHub
-                </a>
-                <a href="https://leetcode.com/shawonlodh" class="contact-link" target="_blank">
-                    🧩 LeetCode
-                </a>
-                <a href="https://stackoverflow.com/users/17956869" class="contact-link" target="_blank">
-                    ❓ Stack Overflow
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Lottie Player for Animations -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
